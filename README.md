@@ -1,3 +1,3 @@
 # Algorithms
 
-## Algorithms written in python
+## Algorithms and Data Structures written in python
