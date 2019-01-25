@@ -1,1 +1,3 @@
-# Algorithms-
+# Algorithms
+
+## Algorithms written in python
