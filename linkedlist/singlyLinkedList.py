@@ -147,7 +147,8 @@ if __name__=='__main__':
 
     # Start with the empty list
     llist = LinkedList()
-
+    llist.push(25)
+    print(llist)
     llist.head  = Node(1)
     second = Node(2)
     third  = Node(3)
