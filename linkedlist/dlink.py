@@ -14,6 +14,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    # adds to beginning
     def push(self, new_data):
         # 1 & 2: Allocate the Node & Put in the data
         new_node = Node(new_data)
@@ -51,6 +52,7 @@ class LinkedList:
         if new_node.next is not None:
             new_node.next.prev = new_node
 
+    # Adds item to the end
     def append(self, new_data):
         # 1. allocate node 2. put in the data
         new_node = Node(new_data)
@@ -104,6 +106,59 @@ class LinkedList:
             prev = temp
             temp = temp.next
 
+    # removes the last item in the double linked list
+    def pop(self):
+        temp = self.head
+
+        if (temp.next == None):
+            self.head = temp.next
+            temp = None
+            return
+
+        while(temp.next is not None):
+            print(temp.data)
+            print(temp.next)
+            prev = temp
+            temp = temp.next
+
+        prev.next = temp.next
+        temp = None
+
+    def pop_item(self, key):
+
+        temp = self.head
+
+        if (temp.data == key):
+            self.head = temp.next
+            temp = None
+            return
+
+        while(temp is not None):
+            if temp.data == key:
+                break
+            prev = temp
+            temp = temp.next
+
+        # if key was not present in linked list
+        if(temp == None):
+            return
+
+        # Unlink the node from linked list
+        # Temp is:  16
+        # Temp.prev is:  4
+        # next is:  45
+        # 4 next points to 45
+        # if node is at the end of the list
+        if temp.next == None:
+            self.pop()
+            return
+        temp.prev.next = temp.next
+        # 45 prev needs to point to 4
+        temp.next.prev = temp.prev
+        temp = None
+
+
+
     def __iter__(self):
         n = self.head
         while n != None:
@@ -121,15 +176,21 @@ class LinkedList:
 # Code execution starts here
 if __name__=='__main__':
     llist = LinkedList()
-
     llist.push(4)
-    print(llist)
+    # print(llist)
     llist.append(45)
     llist.push(32)
     llist.insert_before(16, 45)
-    print(llist)
+    # print(llist)
     llist.insert_before(66, 32)
+    # print(llist)ß
+    llist.pop_item(16)
     print(llist)
+    llist.pop_item(45)
+    print(llist)
+    llist.pop_item(66)
+    print(llist)
+
 
 
 

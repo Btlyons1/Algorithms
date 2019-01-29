@@ -212,3 +212,5 @@ if __name__=='__main__':
     llist.delete(2)
 
     print(llist)
+    llist.delete(5)
+    print(llist)
