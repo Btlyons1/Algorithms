@@ -116,8 +116,6 @@ class LinkedList:
             return
 
         while(temp.next is not None):
-            print(temp.data)
-            print(temp.next)
             prev = temp
             temp = temp.next
 
@@ -157,7 +155,18 @@ class LinkedList:
         temp.next.prev = temp.prev
         temp = None
 
+    def delete(self, node):
+        if self.head is None or node is None:
+            return
 
+        if self.head == node:
+            self.head = node.next
+
+        if node.next is not None:
+            node.next.prev = node.prev
+
+        if node.prev is not None:
+            node.prev.next = node.next
 
     def __iter__(self):
         n = self.head
@@ -190,6 +199,11 @@ if __name__=='__main__':
     print(llist)
     llist.pop_item(66)
     print(llist)
+    llist.delete(llist.head.next)
+    print(llist)
+    llist.delete(llist.head)
+    print(llist)
+
 
 
 
